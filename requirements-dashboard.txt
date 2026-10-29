@@ -1,0 +1,4 @@
+# Dependências opcionais da interface, separadas do núcleo auditável/CI.
+streamlit>=1.60,<2
+plotly>=6.0,<8
+pandas>=2.2,<4

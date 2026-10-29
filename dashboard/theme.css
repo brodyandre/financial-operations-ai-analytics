@@ -1,0 +1,20 @@
+/* Estilo da interface demonstrativa. Somente decoração; nenhuma lógica financeira. */
+:root { --aqua: #67E8CC; --muted: #A0B5C9; }
+.stApp { background: radial-gradient(circle at 85% 0%, rgba(40, 89, 122, 0.23), transparent 35%), #0B1220; }
+.block-container { padding-top: 5rem; max-width: 1320px; }
+h1, h2, h3, p { letter-spacing: -0.02em; }
+h3 { font-weight: 600 !important; }
+[data-testid="stSidebar"] { border-right: 1px solid #223249; }
+[data-testid="stSidebar"] > div:first-child { background: #0E1A2B; }
+[data-testid="stMetric"] { padding: .25rem 0; }
+[data-testid="stMetricValue"] { color: #F5FAFF; letter-spacing: -0.045em; font-weight: 650; }
+[data-testid="stMetricLabel"] { color: #A0B5C9; }
+[data-testid="stVerticalBlockBorderWrapper"] { border-color: #263750 !important; border-radius: 15px !important; }
+.eyebrow { display: block; font-size: .76rem; letter-spacing: .10em; color: #D3E3F5; font-weight: 700; line-height: 1.6; min-height: 1.5rem; margin-bottom: 14px; white-space: normal; overflow: visible; }
+.eyebrow span { color: #67E8CC; padding: 0 10px; }
+.hero { border: 1px solid #264153; border-radius: 20px; padding: 24px 32px 26px; margin-bottom: 13px; background: linear-gradient(118deg, rgba(22,43,65,.94), rgba(15,44,60,.85) 65%, rgba(35,78,78,.46)); position: relative; }
+.hero-tag { color: #67E8CC; font-size: .73rem; font-weight: 700; letter-spacing: .13em; padding-bottom: 14px; }
+.hero h1 { color: #F4F8FF; line-height: 1.08; letter-spacing: -.045em; font-size: clamp(2.1rem,3.8vw,3.45rem); font-weight: 750; margin: 0; }
+.hero h1 span { color: #67E8CC; }
+.hero p { color: #A0B5C9; margin: 14px 0 0; font-size: .99rem; }
+@media (max-width: 680px) { .hero { padding: 20px; } .block-container {padding-top: 4.5rem;} .eyebrow {font-size: .68rem; letter-spacing: .06em;} }
