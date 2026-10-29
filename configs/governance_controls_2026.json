@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "project": "Taranis Black — AI for Finance & Operations",
+  "version_date": "2026-10-29",
+  "policy_status": "draft_for_review_not_approved",
+  "data_scope": "synthetic_mock_data_only",
+  "use_cases": ["C01", "C02", "C03"],
+  "approved_for_production": false,
+  "controls": [
+    {"id":"G-01","theme":"inventory","owner":"Gestor de Dados + Controladoria","requirement":"Inventariar finalidade, origem e classificação dos conjuntos de dados; minimizar campos coletados.","evidence":"Inventário de dataset, finalidade, proprietário e escopo","cases":["C01","C02","C03"],"review_required":true},
+    {"id":"G-02","theme":"lawful_basis","owner":"Privacidade/Jurídico","requirement":"Definir finalidade e hipótese legal de tratamento antes de usar dados pessoais; consentimento não é base universal.","evidence":"Registro de finalidade, hipótese legal e avaliação da necessidade","cases":["C01","C02","C03"],"review_required":true},
+    {"id":"G-03","theme":"prohibited_automation","owner":"Gerência Financeira","requirement":"Proibir decisão autônoma de crédito, alteração contábil, emissão fiscal e liberação de expedição por IA.","evidence":"Matriz de alçadas e logs de aprovação por pessoa autorizada","cases":["C01","C02"],"review_required":true},
+    {"id":"G-04","theme":"human_oversight","owner":"Controladoria / Crédito / Logística","requirement":"Exigir revisão humana de recomendações materiais, permitir contestação e bloqueio da automação.","evidence":"Trilha com aprovador, data, decisão e justificativa","cases":["C01","C02","C03"],"review_required":true},
+    {"id":"G-05","theme":"provenance","owner":"Engenharia de Dados","requirement":"Preservar origem, versão, hashes, fórmulas, premissas e divergências abertas.","evidence":"Manifesto SHA-256, testes e relatórios de conciliação","cases":["C02"],"review_required":true},
+    {"id":"G-06","theme":"security","owner":"TI / Segurança","requirement":"Não enviar segredos, dados financeiros identificáveis ou dados pessoais para contas de IA não homologadas; aplicar acesso mínimo.","evidence":"Registro de avaliação do fornecedor, credenciais protegidas e acessos","cases":["C01","C02","C03"],"review_required":true},
+    {"id":"G-07","theme":"bias_and_validation","owner":"Responsável pelo caso + Privacidade","requirement":"Verificar erro, desempenho desigual por grupos quando lícito e pertinente, e documentação de limitações.","evidence":"Plano de testes, amostra de revisão e relatório de erro/viés","cases":["C01","C03"],"review_required":true},
+    {"id":"G-08","theme":"retention","owner":"Privacidade + TI","requirement":"Definir retenção por finalidade e necessidade, descarte, acesso a logs e registro de alterações.","evidence":"Tabela de temporalidade aprovada e trilha de exclusão","cases":["C01","C02","C03"],"review_required":true},
+    {"id":"G-09","theme":"incident_response","owner":"Segurança + Encarregado/Privacidade","requirement":"Isolar incidentes, registrar fatos, avaliar risco/dano relevante e submeter decisão de comunicação legal ao controlador.","evidence":"Registro do incidente, avaliação de risco e comprovantes de comunicação quando cabíveis","cases":["C01","C02","C03"],"review_required":true},
+    {"id":"G-10","theme":"third_party","owner":"Compras + Privacidade + TI","requirement":"Homologar contratos, retenção pelo fornecedor, localização/transferência internacional e uso dos dados em treinamento.","evidence":"Due diligence e contrato/termos revisados","cases":["C01","C02","C03"],"review_required":true},
+    {"id":"G-11","theme":"data_subject_rights","owner":"Encarregado/Privacidade","requirement":"Oferecer canal para solicitações de titulares, com verificação de identidade e rastreabilidade.","evidence":"Procedimento para direitos do titular e histórico de atendimento","cases":["C01","C02","C03"],"review_required":true},
+    {"id":"G-12","theme":"audit_and_change","owner":"Comitê de IA","requirement":"Analisar mudanças de finalidade/modelo/dados, exceções, incidentes e indicadores antes de expandir pilotos.","evidence":"Ata de comitê, decisões, riscos residuais e responsáveis","cases":["C01","C02","C03"],"review_required":true}
+  ],
+  "risks": [
+    {"id":"R-01","name":"Exposição de dados em prompts ou logs","cases":["C01","C02"],"probability":3,"impact":5,"mitigation":"Dados sintéticos na demonstração; mascaramento, acesso mínimo e homologação do fornecedor antes de qualquer dado real.","owner":"Privacidade/TI","decision_gate":"Bloquear compartilhamento com plataforma não homologada"},
+    {"id":"R-02","name":"Extração incorreta de PDF e instruções maliciosas embutidas","cases":["C01"],"probability":4,"impact":4,"mitigation":"Tratar PDFs como fonte não confiável, validar campos, usar evidência por campo e revisão humana.","owner":"Vendas/Crédito","decision_gate":"Não autorizar pedido sem conferência humana"},
+    {"id":"R-03","name":"Decisão indevida de crédito ou alteração contábil","cases":["C01","C02"],"probability":2,"impact":5,"mitigation":"Bloquear ações de escrita/ERP e exigir regras de alçada e assinatura de responsável.","owner":"Gerência Financeira","decision_gate":"Nenhuma aprovação ou lançamento autônomo"},
+    {"id":"R-04","name":"Divergência financeira interpretada como perda ou fraude","cases":["C02"],"probability":4,"impact":4,"mitigation":"Exibir R$ 1,1 milhão como pendência de reconciliação e registrar escopo das duas fontes.","owner":"Controladoria","decision_gate":"Controller valida hipótese antes de publicação executiva"},
+    {"id":"R-05","name":"Viés e baixa confiabilidade preditiva","cases":["C03"],"probability":5,"impact":4,"mitigation":"Não implantar modelo preditivo sem histórico granular rotulado e avaliação temporal.","owner":"Logística/Engenharia de Dados","decision_gate":"C03 bloqueado por dados"},
+    {"id":"R-06","name":"Auditoria insuficiente de cálculos e alterações","cases":["C02"],"probability":3,"impact":4,"mitigation":"Hash do original, testes automatizados, registro de fórmula e trilha de aprovação.","owner":"Controladoria/Engenharia de Dados","decision_gate":"Divergências materiais ficam abertas até aprovação"},
+    {"id":"R-07","name":"Confiança excessiva em texto gerado por IA","cases":["C01","C02","C03"],"probability":4,"impact":3,"mitigation":"Separar cálculo reproduzível de interpretação; exigir fonte e revisão humana.","owner":"Gestor de cada vertical","decision_gate":"Bloquear recomendação sem dados ou fonte conferível"},
+    {"id":"R-08","name":"Falha de terceiro ou transferência sem avaliação","cases":["C01","C02","C03"],"probability":3,"impact":5,"mitigation":"Due diligence de fornecedor, contratos, localização de processamento e plano de resposta a incidentes.","owner":"TI/Jurídico/Privacidade","decision_gate":"Não enviar dados reais antes da homologação"}
+  ],
+  "committee": {
+    "name": "Comitê de Governança e Auditoria de IA (proposto)",
+    "members_by_role": ["Patrocinador executivo (CEO ou delegado)", "Controladoria", "TI/Segurança", "Privacidade/Encarregado", "Jurídico", "Responsável da área usuária"],
+    "cadence": "quinzenal no piloto; mensal após estabilização; extraordinário em incidentes",
+    "production_approval_requires": ["finalidade e base legal verificadas", "due diligence de dados e fornecedor", "teste e critérios de aceite documentados", "revisão humana e plano de rollback", "riscos residuais aceitos por autoridade competente"]
+  }
+}
