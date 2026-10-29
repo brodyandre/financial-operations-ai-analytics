@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "assessment_date": "2026-10-29",
+  "evaluation_scope": "MVP demonstrativo offline, com dados sintéticos; não equivale a implantação de produção",
+  "assessment_kind": "Julgamento consultivo ordinal, não resultado de mensuração ou pesquisa com stakeholders",
+  "criteria": {
+    "impact": {
+      "financial_relevance": 0.40,
+      "service_level": 0.35,
+      "cross_functional_reach": 0.25
+    },
+    "effort": {
+      "data_readiness_effort": 0.35,
+      "integration_effort": 0.35,
+      "governance_and_adoption_effort": 0.30
+    }
+  },
+  "score_rules": "1 = menor; 5 = maior. Impacto: 5 é maior valor esperado. Esforço: 5 é mais difícil. Notas são hipóteses consultivas sujeitas à revisão humana.",
+  "quadrant_rules": {
+    "high_impact_at_least": 4.0,
+    "low_effort_at_most": 3.0
+  },
+  "use_cases": [
+    {
+      "id": "C01",
+      "title": "Pré-triagem assistida de propostas B2B",
+      "impact": {"financial_relevance": 4, "service_level": 5, "cross_functional_reach": 4},
+      "effort": {"data_readiness_effort": 3, "integration_effort": 4, "governance_and_adoption_effort": 3},
+      "data_gate": "conditional",
+      "reason": "40 min de triagem manual e homologação de crédito de 48h; faltam PDFs individuais representativos para validar extração; revisão humana mandatória.",
+      "decision": "Segundo piloto após reunir amostra sintética de propostas e definir alçadas."
+    },
+    {
+      "id": "C02",
+      "title": "Conciliação financeira e qualidade dos dados",
+      "impact": {"financial_relevance": 5, "service_level": 4, "cross_functional_reach": 4},
+      "effort": {"data_readiness_effort": 2, "integration_effort": 2, "governance_and_adoption_effort": 2},
+      "data_gate": "ready_for_offline_demo",
+      "reason": "Planilhas sintéticas disponíveis; rotina de auditoria tem 48 verificações e 9 testes globais aprovados na etapa anterior; diferença DRE/produtos de R$ 1,1 mi ainda não explicada.",
+      "decision": "Primeiro piloto, restrito a controles determinísticos e dashboard de apoio à Controladoria; sem alegar modelo de IA treinado."
+    },
+    {
+      "id": "C03",
+      "title": "Previsão de atrasos e custos logísticos",
+      "impact": {"financial_relevance": 4, "service_level": 4, "cross_functional_reach": 3},
+      "effort": {"data_readiness_effort": 5, "integration_effort": 5, "governance_and_adoption_effort": 4},
+      "data_gate": "blocked_missing_labeled_history",
+      "reason": "Indicadores agregados evidenciam custo elevado, mas faltam pedidos/eventos históricos rotulados para treinar e validar um modelo preditivo.",
+      "decision": "Não executar no MVP; priorizar somente após aquisição e autorização do histórico granular."
+    }
+  ],
+  "roi_sensitivity": {
+    "use_case_id": "C01",
+    "label": "Cenários meramente ilustrativos de capacidade liberada, sem evidência de volume ou custo reais da empresa",
+    "monthly_order_volumes": [100, 200, 400],
+    "baseline_minutes_per_order": 40,
+    "fraction_of_triage_time_reduced": "0.25",
+    "illustrative_loaded_hourly_cost_brl": "60.00",
+    "illustrative_upfront_cost_brl": "15000.00",
+    "illustrative_monthly_maintenance_brl": "300.00",
+    "months": 12,
+    "caveats": [
+      "Volumes, custos e melhoria de 25% são hipóteses, não dados do kit.",
+      "Capacidade liberada não se converte automaticamente em economia financeira.",
+      "Não incluir eventuais pedidos recuperados ou redução de inadimplência sem evidência.",
+      "A diferença contábil de R$ 1,1 mi não representa benefício ou economia."
+    ]
+  }
+}
