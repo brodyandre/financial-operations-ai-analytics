@@ -1,0 +1,43 @@
+{
+  "project": "Taranis Black — Rota 4 / Etapa 1",
+  "status": "proposta_consultiva_nao_implantada",
+  "data_scope": "somente_dados_sinteticos_alura",
+  "source_process": "06_Descritivo_Processo_Operacional_SIPOC.docx",
+  "source_finance": "05_Financas_Orcado_vs_Realizado.xlsx",
+  "process_stages": [
+    {"id": "P01", "name": "Recebimento da proposta assinada", "activity": "Vendas envia PDF por e-mail, sem pré-validação de CNPJ, limite e estoque", "bottleneck": "Entrada despadronizada e dados incompletos", "source": "DOCX 06, Fluxo AS-IS, Passo 1"},
+    {"id": "P02", "name": "Triagem e consulta de crédito", "activity": "Assistente consulta ERP, birô e planilha local manualmente", "bottleneck": "40 minutos de consulta e cópia por proposta", "source": "DOCX 06, Fluxo AS-IS, Passo 2"},
+    {"id": "P03", "name": "Solicitação de aprovação", "activity": "Assistente encaminha dossiê por e-mail à gerência", "bottleneck": "Mesma alçada para pedidos pequenos e grandes", "source": "DOCX 06, Fluxo AS-IS, Passo 3"},
+    {"id": "P04", "name": "Espera pela decisão", "activity": "Gerência analisa e responde à fila de aprovações", "bottleneck": "24 a 48 horas úteis de espera reportadas", "source": "DOCX 06, Fluxo AS-IS, Passo 4"},
+    {"id": "P05", "name": "Faturamento e autorização de expedição", "activity": "Assistente digita nota no ERP e envia autorização por e-mail ao CD", "bottleneck": "Retrabalho por códigos e divergências de frete CIF/FOB", "source": "DOCX 06, Fluxo AS-IS, Passo 5"}
+  ],
+  "sipoc": [
+    {"supplier": "Vendas B2B e SDR", "input": "Proposta assinada em PDF", "process": "Receber e triar proposta", "output": "Ordem de venda cadastrada", "customer": "Assistente financeiro"},
+    {"supplier": "Cliente B2B", "input": "CNPJ, IE e endereço de entrega", "process": "Consultar crédito e histórico", "output": "Dossiê de crédito", "customer": "Gerência financeira"},
+    {"supplier": "Birô de crédito", "input": "Score, protestos e pendências", "process": "Submeter à alçada", "output": "Autorização formal de faturamento", "customer": "Faturamento e contabilidade"},
+    {"supplier": "Gerência financeira", "input": "Autorização formal por e-mail", "process": "Emitir NF-e e boletos", "output": "DANFE, XML e boletos", "customer": "Cliente comprador"},
+    {"supplier": "CD e transportadoras", "input": "Tabelas de fretes e rotas", "process": "Enviar ordem de expedição", "output": "Picking list e minuta", "customer": "CD de Joinville e transportadora"}
+  ],
+  "ishikawa": {
+    "Metodo": ["Ausência de POP documentado", "Aprovação gerencial para pedidos de qualquer valor", "Regras CIF/FOB não conferidas previamente"],
+    "Maquina": ["ERP legado sem API de integração", "Ausência de OCR para PDFs de propostas", "Três planilhas locais não sincronizadas"],
+    "Mao de obra": ["Cópia e digitação manuais", "Sobrecarga de assistentes no fechamento", "Liderança concentra aprovações triviais"],
+    "Material": ["Propostas com campos incompletos", "Divergências entre códigos de produto e ERP", "Documentação cadastral desatualizada"],
+    "Medicao": ["Ausência de acompanhamento de SLA em tempo real", "Atrasos conhecidos somente ao fim do mês", "Fila de pedidos sem visibilidade por departamento"],
+    "Meio ambiente": ["Distância entre comercial em SP e expedição em Joinville", "Comunicação fragmentada por e-mail e WhatsApp", "Cultura reativa de resolução de urgências"]
+  },
+  "kpi_source_expectations": [
+    {"metric": "Tempo Médio de Fechamento Contábil Mensal", "target": "2 dias úteis", "actual": "7 dias úteis", "source_row": "2"},
+    {"metric": "Tempo de Homologação de Crédito de Pedido B2B", "target": "Max. 4 horas", "actual": "48 horas", "source_row": "3"},
+    {"metric": "Reentregas e Fretes Expressos de Emergência", "target": "0.8% do faturamento", "actual": "2.8% do faturamento", "source_row": "4"},
+    {"metric": "Divergência em Boletos Faturados Emitidos", "target": "< 0.5% das NF-e", "actual": "6.8% das NF-e emitidas", "source_row": "5"},
+    {"metric": "Inadimplência B2B Acima de 90 dias", "target": "1.2% da receita", "actual": "3.4% da receita", "source_row": "6"}
+  ],
+  "guardrails": {
+    "human_approval_required": true,
+    "automatic_credit_approval": false,
+    "erp_integration_claimed": false,
+    "financial_benefit_realized_claimed": false,
+    "predictive_model_claimed": false
+  }
+}
