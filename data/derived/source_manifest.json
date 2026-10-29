@@ -1,0 +1,13 @@
+{
+  "original_file": "05_Financas_Orcado_vs_Realizado.xlsx",
+  "original_sha256": "854c629f9d08f368b3e85978cf967ffd817d0f78ce46a3e9508b270e9e232062",
+  "original_size_bytes": 20916,
+  "extraction_date": "2026-10-29",
+  "extraction_method": "artifact_tool (leitura do XLSX oficial, exportacao de valores para CSV)",
+  "sheets": [
+    "DRE_Trimestral_Orcado_Real",
+    "Receita_por_Linha_Produto",
+    "Gargalos_Operacionais_Custos"
+  ],
+  "notice": "CSV derivados de valores de origem. Planilha original e demais arquivos do Mock Data Kit permanecem inalterados, fora do repositorio."
+}

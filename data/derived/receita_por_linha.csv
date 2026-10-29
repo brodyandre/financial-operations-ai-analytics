@@ -1,0 +1,6 @@
+product,reported_share_pct,annual_budget,annual_actual,reported_variance,reported_variance_pct,reported_gross_margin_pct,reported_bottleneck,source_sheet,source_row
+Taranis ErgoPro (Cadeiras Corporativas),48.5%,23500000,23850000,350000,0.015,44.2%,"Vendas aquecidas, mas margem comprimida por fretes de emergência e devoluções",Receita_por_Linha_Produto,2
+Taranis SmartDesk (Mesas Elevatórias),27.5%,13200000,12650000,-550000,-0.042,38.5%,Atrasos na homologação de crédito travam faturamento de pedidos B2B em 48h,Receita_por_Linha_Produto,3
+Taranis Silence (Cabines Acústicas),18.0%,8600000,8100000,-500000,-0.058,52.0%,Ciclo longo de vendas (90 dias) e complexidade de logística com montagem técnica,Receita_por_Linha_Produto,4
+Acessórios e Periféricos Ergonômicos,6.0%,2700000,2800000,100000,0.037,61.0%,Alto volume e tíquete baixo; conciliação de boletos manuais sobrecarrega time,Receita_por_Linha_Produto,5
+TOTAL TARANIS BLACK,100.0%,48000000,47400000,-600000,-0.0125,43.8%,Desvio negativo consolidado de R$ 600 mil devido a perdas operacionais e fretes,Receita_por_Linha_Produto,6

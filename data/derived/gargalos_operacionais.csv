@@ -1,0 +1,6 @@
+metric,target,actual,gap,estimated_annual_impact,reported_cause,source_sheet,source_row
+Tempo Médio de Fechamento Contábil Mensal,2 dias úteis,7 dias úteis,+5 dias de atraso,R$ 180.000 / ano em horas extras e auditorias,Conciliação manual de dados entre 3 planilhas do Excel e ERP legado desconectado,Gargalos_Operacionais_Custos,2
+Tempo de Homologação de Crédito de Pedido B2B,Max. 4 horas,48 horas,+44 horas de retenção,R$ 1.250.000 / ano em pedidos cancelados por lentidão,Assistente consulta Serasa manualmente (40 min/pedido) e depende de e-mail de gerente,Gargalos_Operacionais_Custos,3
+Reentregas e Fretes Expressos de Emergência,0.8% do faturamento,2.8% do faturamento,+2.0 p.p. acima do teto,R$ 960.000 / ano em fretes duplicados,Erro na transposição manual de dados da proposta para a ordem de expedição do CD,Gargalos_Operacionais_Custos,4
+Divergência em Boletos Faturados Emitidos,< 0.5% das NF-e,6.8% das NF-e emitidas,+6.3 p.p. de retrabalho,R$ 390.000 / ano em custos de cancelamento e juros,Divergência entre tabela de preço do comercial e cadastro desatualizado no ERP,Gargalos_Operacionais_Custos,5
+Inadimplência B2B Acima de 90 dias,1.2% da receita,3.4% da receita,+2.2 p.p. de risco,R$ 1.110.000 / ano em PDD / inadimplência,Cobrança não automatizada; régua de lembretes enviada manualmente por e-mail,Gargalos_Operacionais_Custos,6

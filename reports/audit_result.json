@@ -1,0 +1,613 @@
+{
+  "project": "Challenge Taranis Black — ONE G11 / Rota 4",
+  "source_manifest": {
+    "original_file": "05_Financas_Orcado_vs_Realizado.xlsx",
+    "original_sha256": "854c629f9d08f368b3e85978cf967ffd817d0f78ce46a3e9508b270e9e232062",
+    "original_size_bytes": 20916,
+    "extraction_date": "2026-10-29",
+    "extraction_method": "artifact_tool (leitura do XLSX oficial, exportacao de valores para CSV)",
+    "sheets": [
+      "DRE_Trimestral_Orcado_Real",
+      "Receita_por_Linha_Produto",
+      "Gargalos_Operacionais_Custos"
+    ],
+    "notice": "CSV derivados de valores de origem. Planilha original e demais arquivos do Mock Data Kit permanecem inalterados, fora do repositorio."
+  },
+  "summary": {
+    "automated_checks": 48,
+    "passed": 48,
+    "failed": 0,
+    "issues_for_review": 4,
+    "dre_revenue_budget": "48600000",
+    "dre_revenue_actual": "48500000",
+    "products_revenue_budget": "48000000",
+    "products_revenue_actual": "47400000",
+    "ebitda_budget": "9848000",
+    "ebitda_actual": "5770000",
+    "ebitda_gap": "-4078000",
+    "ebitda_variance_pct": "-41.40942323314378554021121040",
+    "net_profit_budget": "5965080",
+    "net_profit_actual": "3108600",
+    "net_profit_variance_pct": "-47.88670059747731799070590839",
+    "bottleneck_count": 5
+  },
+  "cross_sheet_reconciliation": [
+    {
+      "comparison": "orçada",
+      "dre": "48600000",
+      "products": "48000000",
+      "difference_dre_minus_products": "600000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx"
+    },
+    {
+      "comparison": "realizada",
+      "dre": "48500000",
+      "products": "47400000",
+      "difference_dre_minus_products": "1100000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx"
+    }
+  ],
+  "product_share_recalculation": [
+    {
+      "product": "Taranis ErgoPro (Cadeiras Corporativas)",
+      "declared_share_pct": "48.5",
+      "calculated_share_pct": "50.32",
+      "deviation_pp": "1.82",
+      "status": "REVIEW",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / Receita_por_Linha_Produto / linha 2"
+    },
+    {
+      "product": "Taranis SmartDesk (Mesas Elevatórias)",
+      "declared_share_pct": "27.5",
+      "calculated_share_pct": "26.69",
+      "deviation_pp": "-0.81",
+      "status": "REVIEW",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / Receita_por_Linha_Produto / linha 3"
+    },
+    {
+      "product": "Taranis Silence (Cabines Acústicas)",
+      "declared_share_pct": "18.0",
+      "calculated_share_pct": "17.09",
+      "deviation_pp": "-0.91",
+      "status": "REVIEW",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / Receita_por_Linha_Produto / linha 4"
+    },
+    {
+      "product": "Acessórios e Periféricos Ergonômicos",
+      "declared_share_pct": "6.0",
+      "calculated_share_pct": "5.91",
+      "deviation_pp": "-0.09",
+      "status": "OK",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / Receita_por_Linha_Produto / linha 5"
+    }
+  ],
+  "expense_overruns": [
+    {
+      "account": "Despesas com Fretes e Logística de Entrega CD",
+      "budget_cost": "2380000",
+      "actual_cost": "3740000",
+      "unfavorable_variance": "1360000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 16"
+    },
+    {
+      "account": "Reentregas e Multas por Divergência de Pedido",
+      "budget_cost": "210000",
+      "actual_cost": "725000",
+      "unfavorable_variance": "515000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 17"
+    },
+    {
+      "account": "Provisão para Devedores Duvidosos (Inadimplência B2B)",
+      "budget_cost": "440000",
+      "actual_cost": "1110000",
+      "unfavorable_variance": "670000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 19"
+    }
+  ],
+  "checks": [
+    {
+      "id": "SUM-3-BUDGET",
+      "type": "quarter_sum",
+      "account": "Receita Canal B2B Corporativo (70%)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 3",
+      "status": "PASS",
+      "expected_annual": "34000000",
+      "reported_annual": "34000000"
+    },
+    {
+      "id": "SUM-3-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Receita Canal B2B Corporativo (70%)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 3",
+      "status": "PASS",
+      "expected_annual": "33600000",
+      "reported_annual": "33600000"
+    },
+    {
+      "id": "SUM-4-BUDGET",
+      "type": "quarter_sum",
+      "account": "Receita Canal D2C / E-commerce (30%)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 4",
+      "status": "PASS",
+      "expected_annual": "14600000",
+      "reported_annual": "14600000"
+    },
+    {
+      "id": "SUM-4-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Receita Canal D2C / E-commerce (30%)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 4",
+      "status": "PASS",
+      "expected_annual": "14900000",
+      "reported_annual": "14900000"
+    },
+    {
+      "id": "SUM-5-BUDGET",
+      "type": "quarter_sum",
+      "account": "TOTAL RECEITA BRUTA",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 5",
+      "status": "PASS",
+      "expected_annual": "48600000",
+      "reported_annual": "48600000"
+    },
+    {
+      "id": "SUM-5-ACTUAL",
+      "type": "quarter_sum",
+      "account": "TOTAL RECEITA BRUTA",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 5",
+      "status": "PASS",
+      "expected_annual": "48500000",
+      "reported_annual": "48500000"
+    },
+    {
+      "id": "SUM-7-BUDGET",
+      "type": "quarter_sum",
+      "account": "Impostos Incidentes (ICMS, PIS, COFINS)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 7",
+      "status": "PASS",
+      "expected_annual": "-8262000",
+      "reported_annual": "-8262000"
+    },
+    {
+      "id": "SUM-7-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Impostos Incidentes (ICMS, PIS, COFINS)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 7",
+      "status": "PASS",
+      "expected_annual": "-8245000",
+      "reported_annual": "-8245000"
+    },
+    {
+      "id": "SUM-8-BUDGET",
+      "type": "quarter_sum",
+      "account": "Cancelamentos e Devoluções por Atraso Logístico",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 8",
+      "status": "PASS",
+      "expected_annual": "-560000",
+      "reported_annual": "-560000"
+    },
+    {
+      "id": "SUM-8-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Cancelamentos e Devoluções por Atraso Logístico",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 8",
+      "status": "PASS",
+      "expected_annual": "-1235000",
+      "reported_annual": "-1235000"
+    },
+    {
+      "id": "SUM-9-BUDGET",
+      "type": "quarter_sum",
+      "account": "RECEITA LÍQUIDA OPERACIONAL",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 9",
+      "status": "PASS",
+      "expected_annual": "39778000",
+      "reported_annual": "39778000"
+    },
+    {
+      "id": "SUM-9-ACTUAL",
+      "type": "quarter_sum",
+      "account": "RECEITA LÍQUIDA OPERACIONAL",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 9",
+      "status": "PASS",
+      "expected_annual": "39020000",
+      "reported_annual": "39020000"
+    },
+    {
+      "id": "SUM-11-BUDGET",
+      "type": "quarter_sum",
+      "account": "Matéria-prima, Mesh e Componentes de Alumínio",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 11",
+      "status": "PASS",
+      "expected_annual": "-16300000",
+      "reported_annual": "-16300000"
+    },
+    {
+      "id": "SUM-11-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Matéria-prima, Mesh e Componentes de Alumínio",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 11",
+      "status": "PASS",
+      "expected_annual": "-16700000",
+      "reported_annual": "-16700000"
+    },
+    {
+      "id": "SUM-12-BUDGET",
+      "type": "quarter_sum",
+      "account": "Mão de Obra Fabril e Montagem Direta",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 12",
+      "status": "PASS",
+      "expected_annual": "-3780000",
+      "reported_annual": "-3780000"
+    },
+    {
+      "id": "SUM-12-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Mão de Obra Fabril e Montagem Direta",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 12",
+      "status": "PASS",
+      "expected_annual": "-3890000",
+      "reported_annual": "-3890000"
+    },
+    {
+      "id": "SUM-13-BUDGET",
+      "type": "quarter_sum",
+      "account": "LUCRO BRUTO OPERACIONAL",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 13",
+      "status": "PASS",
+      "expected_annual": "19698000",
+      "reported_annual": "19698000"
+    },
+    {
+      "id": "SUM-13-ACTUAL",
+      "type": "quarter_sum",
+      "account": "LUCRO BRUTO OPERACIONAL",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 13",
+      "status": "PASS",
+      "expected_annual": "18430000",
+      "reported_annual": "18430000"
+    },
+    {
+      "id": "SUM-15-BUDGET",
+      "type": "quarter_sum",
+      "account": "Despesas Comerciais e Vendas (Comissões e SDRs)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 15",
+      "status": "PASS",
+      "expected_annual": "-3060000",
+      "reported_annual": "-3060000"
+    },
+    {
+      "id": "SUM-15-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Despesas Comerciais e Vendas (Comissões e SDRs)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 15",
+      "status": "PASS",
+      "expected_annual": "-3065000",
+      "reported_annual": "-3065000"
+    },
+    {
+      "id": "SUM-16-BUDGET",
+      "type": "quarter_sum",
+      "account": "Despesas com Fretes e Logística de Entrega CD",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 16",
+      "status": "PASS",
+      "expected_annual": "-2380000",
+      "reported_annual": "-2380000"
+    },
+    {
+      "id": "SUM-16-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Despesas com Fretes e Logística de Entrega CD",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 16",
+      "status": "PASS",
+      "expected_annual": "-3740000",
+      "reported_annual": "-3740000"
+    },
+    {
+      "id": "SUM-17-BUDGET",
+      "type": "quarter_sum",
+      "account": "Reentregas e Multas por Divergência de Pedido",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 17",
+      "status": "PASS",
+      "expected_annual": "-210000",
+      "reported_annual": "-210000"
+    },
+    {
+      "id": "SUM-17-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Reentregas e Multas por Divergência de Pedido",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 17",
+      "status": "PASS",
+      "expected_annual": "-725000",
+      "reported_annual": "-725000"
+    },
+    {
+      "id": "SUM-18-BUDGET",
+      "type": "quarter_sum",
+      "account": "Despesas Administrativas e Sistemas Legados",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 18",
+      "status": "PASS",
+      "expected_annual": "-1760000",
+      "reported_annual": "-1760000"
+    },
+    {
+      "id": "SUM-18-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Despesas Administrativas e Sistemas Legados",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 18",
+      "status": "PASS",
+      "expected_annual": "-2020000",
+      "reported_annual": "-2020000"
+    },
+    {
+      "id": "SUM-19-BUDGET",
+      "type": "quarter_sum",
+      "account": "Provisão para Devedores Duvidosos (Inadimplência B2B)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 19",
+      "status": "PASS",
+      "expected_annual": "-440000",
+      "reported_annual": "-440000"
+    },
+    {
+      "id": "SUM-19-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Provisão para Devedores Duvidosos (Inadimplência B2B)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 19",
+      "status": "PASS",
+      "expected_annual": "-1110000",
+      "reported_annual": "-1110000"
+    },
+    {
+      "id": "SUM-20-BUDGET",
+      "type": "quarter_sum",
+      "account": "Marketing Institucional e Geração de Demanda",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 20",
+      "status": "PASS",
+      "expected_annual": "-2000000",
+      "reported_annual": "-2000000"
+    },
+    {
+      "id": "SUM-20-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Marketing Institucional e Geração de Demanda",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 20",
+      "status": "PASS",
+      "expected_annual": "-2000000",
+      "reported_annual": "-2000000"
+    },
+    {
+      "id": "SUM-21-BUDGET",
+      "type": "quarter_sum",
+      "account": "EBITDA (RESULTADO OPERACIONAL ANTES DE JUROS/IMP.)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 21",
+      "status": "PASS",
+      "expected_annual": "9848000",
+      "reported_annual": "9848000"
+    },
+    {
+      "id": "SUM-21-ACTUAL",
+      "type": "quarter_sum",
+      "account": "EBITDA (RESULTADO OPERACIONAL ANTES DE JUROS/IMP.)",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 21",
+      "status": "PASS",
+      "expected_annual": "5770000",
+      "reported_annual": "5770000"
+    },
+    {
+      "id": "SUM-22-BUDGET",
+      "type": "quarter_sum",
+      "account": "Despesas Financeiras Líquidas e Juros",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 22",
+      "status": "PASS",
+      "expected_annual": "-810000",
+      "reported_annual": "-810000"
+    },
+    {
+      "id": "SUM-22-ACTUAL",
+      "type": "quarter_sum",
+      "account": "Despesas Financeiras Líquidas e Juros",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 22",
+      "status": "PASS",
+      "expected_annual": "-1060000",
+      "reported_annual": "-1060000"
+    },
+    {
+      "id": "SUM-23-BUDGET",
+      "type": "quarter_sum",
+      "account": "IRPJ e CSLL Provisionados",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 23",
+      "status": "PASS",
+      "expected_annual": "-3072920",
+      "reported_annual": "-3072920"
+    },
+    {
+      "id": "SUM-23-ACTUAL",
+      "type": "quarter_sum",
+      "account": "IRPJ e CSLL Provisionados",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 23",
+      "status": "PASS",
+      "expected_annual": "-1601400",
+      "reported_annual": "-1601400"
+    },
+    {
+      "id": "SUM-24-BUDGET",
+      "type": "quarter_sum",
+      "account": "LUCRO LÍQUIDO DO EXERCÍCIO",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 24",
+      "status": "PASS",
+      "expected_annual": "5965080",
+      "reported_annual": "5965080"
+    },
+    {
+      "id": "SUM-24-ACTUAL",
+      "type": "quarter_sum",
+      "account": "LUCRO LÍQUIDO DO EXERCÍCIO",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / linha 24",
+      "status": "PASS",
+      "expected_annual": "3108600",
+      "reported_annual": "3108600"
+    },
+    {
+      "id": "PROD-BUDGET",
+      "type": "product_sum",
+      "status": "PASS",
+      "calculated": "48000000",
+      "reported": "48000000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / Receita_por_Linha_Produto / linhas 2 a 6"
+    },
+    {
+      "id": "PROD-ACTUAL",
+      "type": "product_sum",
+      "status": "PASS",
+      "calculated": "47400000",
+      "reported": "47400000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / Receita_por_Linha_Produto / linhas 2 a 6"
+    },
+    {
+      "id": "IDENT-net_revenue-budget",
+      "type": "accounting_identity",
+      "status": "PASS",
+      "expected": "39778000",
+      "reported": "39778000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / totais anuais"
+    },
+    {
+      "id": "IDENT-net_revenue-actual",
+      "type": "accounting_identity",
+      "status": "PASS",
+      "expected": "39020000",
+      "reported": "39020000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / totais anuais"
+    },
+    {
+      "id": "IDENT-gross_profit-budget",
+      "type": "accounting_identity",
+      "status": "PASS",
+      "expected": "19698000",
+      "reported": "19698000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / totais anuais"
+    },
+    {
+      "id": "IDENT-gross_profit-actual",
+      "type": "accounting_identity",
+      "status": "PASS",
+      "expected": "18430000",
+      "reported": "18430000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / totais anuais"
+    },
+    {
+      "id": "IDENT-ebitda-budget",
+      "type": "accounting_identity",
+      "status": "PASS",
+      "expected": "9848000",
+      "reported": "9848000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / totais anuais"
+    },
+    {
+      "id": "IDENT-ebitda-actual",
+      "type": "accounting_identity",
+      "status": "PASS",
+      "expected": "5770000",
+      "reported": "5770000",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / totais anuais"
+    },
+    {
+      "id": "IDENT-net_income-budget",
+      "type": "accounting_identity",
+      "status": "PASS",
+      "expected": "5965080",
+      "reported": "5965080",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / totais anuais"
+    },
+    {
+      "id": "IDENT-net_income-actual",
+      "type": "accounting_identity",
+      "status": "PASS",
+      "expected": "3108600",
+      "reported": "3108600",
+      "source": "05_Financas_Orcado_vs_Realizado.xlsx / DRE_Trimestral_Orcado_Real / totais anuais"
+    }
+  ],
+  "issues": [
+    {
+      "id": "DQ-001",
+      "severity": "high",
+      "title": "Receita bruta anual não reconcilia entre abas",
+      "evidence": "A DRE difere do total por linhas de produto no orçado e no realizado.",
+      "action": "Confirmar critérios de escopo, canais, período e regras de consolidação. Não somar nem substituir bases sem validação."
+    },
+    {
+      "id": "DQ-002",
+      "severity": "medium",
+      "title": "Participações por produto não correspondem integralmente aos valores realizados",
+      "evidence": "Os percentuais informados somam 100%, mas diferem dos percentuais calculados a partir dos valores reais por produto.",
+      "action": "Definir a base do percentual informado e sinalizar divergências maiores que 0,5 ponto percentual."
+    },
+    {
+      "id": "DQ-003",
+      "severity": "medium",
+      "title": "Impactos operacionais estimados podem sobrepor despesas da DRE",
+      "evidence": "Gargalos_Operacionais_Custos apresenta impactos estimados, enquanto a DRE apresenta despesas contabilizadas.",
+      "action": "Não somar diretamente as estimativas de impacto aos desvios contábeis; solicitar rastreio e conciliação."
+    },
+    {
+      "id": "DQ-004",
+      "severity": "medium",
+      "title": "Histórico insuficiente para afirmar precisão preditiva",
+      "evidence": "A DRE disponibilizada tem quatro observações trimestrais.",
+      "action": "Usar cenários com premissas explícitas; não anunciar previsão estatisticamente validada."
+    }
+  ],
+  "bottlenecks": [
+    {
+      "metric": "Tempo Médio de Fechamento Contábil Mensal",
+      "target": "2 dias úteis",
+      "actual": "7 dias úteis",
+      "gap": "+5 dias de atraso",
+      "estimated_annual_impact": "R$ 180.000 / ano em horas extras e auditorias",
+      "reported_cause": "Conciliação manual de dados entre 3 planilhas do Excel e ERP legado desconectado",
+      "source_sheet": "Gargalos_Operacionais_Custos",
+      "source_row": "2"
+    },
+    {
+      "metric": "Tempo de Homologação de Crédito de Pedido B2B",
+      "target": "Max. 4 horas",
+      "actual": "48 horas",
+      "gap": "+44 horas de retenção",
+      "estimated_annual_impact": "R$ 1.250.000 / ano em pedidos cancelados por lentidão",
+      "reported_cause": "Assistente consulta Serasa manualmente (40 min/pedido) e depende de e-mail de gerente",
+      "source_sheet": "Gargalos_Operacionais_Custos",
+      "source_row": "3"
+    },
+    {
+      "metric": "Reentregas e Fretes Expressos de Emergência",
+      "target": "0.8% do faturamento",
+      "actual": "2.8% do faturamento",
+      "gap": "+2.0 p.p. acima do teto",
+      "estimated_annual_impact": "R$ 960.000 / ano em fretes duplicados",
+      "reported_cause": "Erro na transposição manual de dados da proposta para a ordem de expedição do CD",
+      "source_sheet": "Gargalos_Operacionais_Custos",
+      "source_row": "4"
+    },
+    {
+      "metric": "Divergência em Boletos Faturados Emitidos",
+      "target": "< 0.5% das NF-e",
+      "actual": "6.8% das NF-e emitidas",
+      "gap": "+6.3 p.p. de retrabalho",
+      "estimated_annual_impact": "R$ 390.000 / ano em custos de cancelamento e juros",
+      "reported_cause": "Divergência entre tabela de preço do comercial e cadastro desatualizado no ERP",
+      "source_sheet": "Gargalos_Operacionais_Custos",
+      "source_row": "5"
+    },
+    {
+      "metric": "Inadimplência B2B Acima de 90 dias",
+      "target": "1.2% da receita",
+      "actual": "3.4% da receita",
+      "gap": "+2.2 p.p. de risco",
+      "estimated_annual_impact": "R$ 1.110.000 / ano em PDD / inadimplência",
+      "reported_cause": "Cobrança não automatizada; régua de lembretes enviada manualmente por e-mail",
+      "source_sheet": "Gargalos_Operacionais_Custos",
+      "source_row": "6"
+    }
+  ]
+}

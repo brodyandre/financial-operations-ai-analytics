@@ -1,0 +1,43 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+.DS_Store
+.vscode/
+# Arquivos originais de terceiros: manter local e fora do GitHub
+data/source/*
+!data/source/README.md
+# Gravações e exports potencialmente grandes
+*.mp4
+*.mov
+*.zip
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Credenciais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Arquivos locais
+.vscode/
+.DS_Store
+
+# Materiais originais e privados
+data/raw/
+data/source/
+data/original/
+data/private/
+data/mock/
+Material de Apoio.zip
+
+# Pacotes de distribuição
+*.zip
