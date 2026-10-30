@@ -167,7 +167,16 @@ def quality(data: dict) -> None:
     st.dataframe(pd.DataFrame([{"Base": label.capitalize(), "DRE": pt_brl(v["dre"]), "Produtos": pt_brl(v["products"]), "Diferença": pt_brl(v["difference"])} for label, v in comparisons.items()]), hide_index=True, width="stretch")
     st.warning("A diferença de R$ 1,1 mi no realizado e R$ 600 mil no orçado não deve ser corrigida ou considerada perda até reconciliação de escopo e critérios.")
     st.markdown("**Registro de exceções para análise humana**")
-    st.dataframe(pd.DataFrame([{"ID": r["id"], "Prioridade": r["severity"], "Problema": r["title"], "Próxima verificação": r["action"]} for r in audit["issues"]]), hide_index=True, width="stretch")
+    st.caption("Achados completos, sem corte de texto ou rolagem horizontal.")
+    priority_labels = {"high": "Alta", "medium": "Média", "low": "Baixa"}
+    for issue in audit["issues"]:
+        with st.container(border=True):
+            priority = priority_labels.get(str(issue["severity"]).lower(), str(issue["severity"]))
+            st.caption(f"{issue['id']} · Prioridade: {priority}")
+            st.markdown("**Problema**")
+            st.write(issue["title"])
+            st.markdown("**Próxima verificação**")
+            st.write(issue["action"])
     with st.expander("Percentuais declarados x calculados por linha de produto"):
         st.dataframe(pd.DataFrame([{"Produto": r["product"], "Declarado (%)": float(r["declared_share_pct"]), "Calculado (%)": float(r["calculated_share_pct"]), "Diferença (p.p.)": float(r["deviation_pp"]), "Status": r["status"]} for r in audit["product_share_recalculation"]]), hide_index=True, width="stretch")
     st.caption("Fontes: planilha 05 da Alura, abas DRE_Trimestral_Orcado_Real e Receita_por_Linha_Produto. A matriz de achados usa audit.py e não modifica as fontes.")
@@ -217,7 +226,7 @@ with st.sidebar:
     st.markdown("### ◈ TARANIS BLACK")
     st.caption("FINANCIAL OPERATIONS INTELLIGENCE")
     st.divider()
-    section = st.radio("Navegação", ["Visão executiva", "Análise financeira", "Qualidade de dados", "Operações", "Cenários & ChatGPT"], label_visibility="collapsed")
+    section = st.radio("Navegação", ["Visão executiva", "Análise financeira", "Qualidade de dados", "Investigação DQ-001", "Operações", "Cenários & ChatGPT"], label_visibility="collapsed")
     st.divider()
     period_label = st.selectbox("Período dos indicadores", list(PERIODS))
     st.caption("A reconciliação de produtos é anual, independentemente do período selecionado.")
@@ -238,6 +247,9 @@ elif section == "Análise financeira":
     finance(data, period)
 elif section == "Qualidade de dados":
     quality(data)
+elif section == "Investigação DQ-001":
+    from taranis_black.investigation_ui import render_investigation
+    render_investigation(data)
 elif section == "Operações":
     operations(data)
 else:
